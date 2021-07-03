@@ -36,10 +36,14 @@ public class PersonController {
   }
 
   @RequestMapping(value = "/persons/{id}", method = RequestMethod.GET)
-  public ResponseEntity<Person> findPersonById(@PathVariable( value = "id") Long personId){
+  public ResponseEntity findPersonById(@PathVariable( value = "id") Long personId){
     log.info("Inside findPersonById method of PersonController");
     Person person = personService.findByPersonId(personId);
-    return new ResponseEntity<Person>(person, HttpStatus.OK);
+    if(person != null) {
+      return new ResponseEntity<Person>(person, HttpStatus.OK);
+    }else{
+      return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Person not found "+personId);
+    }
   }
 
 }

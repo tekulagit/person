@@ -21,7 +21,7 @@ public class PersonService {
 
   public Person findByPersonId(Long personId) {
     log.info("Inside findPersonById method of PersonService");
-   return personRepository.findByPersonId(personId);
+   return personRepository.findByPersonid(personId);
 
   }
 
