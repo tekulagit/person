@@ -39,11 +39,7 @@ public class PersonController {
   public ResponseEntity findPersonById(@PathVariable( value = "id") Long personId){
     log.info("Inside findPersonById method of PersonController");
     Person person = personService.findByPersonId(personId);
-    if(person != null) {
-      return new ResponseEntity<Person>(person, HttpStatus.OK);
-    }else{
-      return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Person not found "+personId);
-    }
+    return new ResponseEntity<Person>(person, HttpStatus.OK);
   }
 
 }
